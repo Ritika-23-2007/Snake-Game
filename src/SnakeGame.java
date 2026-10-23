@@ -6,11 +6,12 @@ public class SnakeGame {
     int boardSize = 10;
     char[][] board = new char[boardSize][boardSize];
     int snakeLength = 2;
+    int maxSnakeLength = boardSize * boardSize;
     int foodX = random.nextInt(boardSize);
     int foodY = random.nextInt(boardSize);
 
     public void printBoard() {
-        
+
         // Initialize the board with empty spaces
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
@@ -20,7 +21,7 @@ public class SnakeGame {
         //Place the snake and the food on the board
         board[5][5] = 'S'; // Snake's head
         board[5][4] = 'S'; // Snake's body
-        board[foodX][foodY] = 'F'; // Food
+        board[foodY][foodX] = 'F'; // Food
 
         // Print the board
         for (int i = 0; i < boardSize; i++) {
