@@ -9,6 +9,8 @@ public class SnakeGame {
     int maxSnakeLength = boardSize * boardSize;
     int foodX = random.nextInt(boardSize);
     int foodY = random.nextInt(boardSize);
+    int[] snakeX = new int[maxSnakeLength];
+    int[] snakeY = new int[maxSnakeLength];
 
     public void printBoard() {
 
@@ -18,10 +20,21 @@ public class SnakeGame {
                 board[i][j] = '.';
             }
         }
-        //Place the snake and the food on the board
-        board[5][5] = 'S'; // Snake's head
-        board[5][4] = 'S'; // Snake's body
+        // Set initial snake coordinates (Length 2)
+        snakeX[0] = 5;
+        snakeY[0] = 5; // Head at column 5, row 5
+        snakeX[1] = 4;
+        snakeY[1] = 5; // Body at column 4, row 5
         board[foodY][foodX] = 'F'; // Food
+
+        // 3. Place the snake dynamically using the loop
+        for (int i = 0; i < snakeLength; i++) {
+            if (i == 0) {
+                board[snakeY[i]][snakeX[i]] = 'O';
+            } else {
+                board[snakeY[i]][snakeX[i]] = 'o';
+            }
+     }
 
         // Print the board
         for (int i = 0; i < boardSize; i++) {
